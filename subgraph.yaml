@@ -1,0 +1,41 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AIDataAssistant
+    network: base-sepolia
+    source:
+      address: "0xb0Be9A7C457eCcd7b4E3f62166D6BA9392977fAA"
+      abi: AIDataAssistant
+      startBlock: 18023350
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - RideCompleted
+        - RideScheduled
+        - ServiceAuthorized
+        - ServiceRevoked
+        - SubscriptionPurchased
+      abis:
+        - name: AIDataAssistant
+          file: ./abis/AIDataAssistant.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RideCompleted(indexed bytes32,indexed address,indexed address)
+          handler: handleRideCompleted
+        - event: RideScheduled(indexed bytes32,indexed address,uint256)
+          handler: handleRideScheduled
+        - event: ServiceAuthorized(indexed address,indexed string)
+          handler: handleServiceAuthorized
+        - event: ServiceRevoked(indexed address,indexed string)
+          handler: handleServiceRevoked
+        - event: SubscriptionPurchased(indexed address,uint256)
+          handler: handleSubscriptionPurchased
+      file: ./src/ai-data-assistant.ts

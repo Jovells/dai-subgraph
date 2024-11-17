@@ -1,0 +1,55 @@
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RideCompleted @entity(immutable: true) {
+  id: Bytes!
+  rideId: Bytes! # bytes32
+  rider: Bytes! # address
+  driver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RideScheduled @entity(immutable: true) {
+  id: Bytes!
+  rideId: Bytes! # bytes32
+  rider: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ServiceAuthorized @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  service: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ServiceRevoked @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  service: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SubscriptionPurchased @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  expiresAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

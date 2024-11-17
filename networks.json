@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "AIDataAssistant": {
+      "address": "0xb0Be9A7C457eCcd7b4E3f62166D6BA9392977fAA",
+      "startBlock": 18023350
+    }
+  }
+}
